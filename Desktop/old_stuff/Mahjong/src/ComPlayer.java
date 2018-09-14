@@ -105,8 +105,10 @@ public static void comDeclareTiles(Player player) {
 				if (player.getDeclaredSuit().equals("")) {
 					player.setDeclaredSuit(player.getDeck().get(i).getSuit());
 				}
+				
 				System.out.print(player.getName() + " declared a pung of " );
 				player.getDeck().get(i).tileToString();
+				
 				addPung(player.getDeck().get(i), player);
 				return;
 			}
@@ -130,31 +132,31 @@ public static void comDeclareTiles(Player player) {
 				}
 		
 		if (type == 1 || type == 4 || type == 5 || type == 7) {
-				addDiscardChow(new Tile(discard.getNumber() + 1, discard.getSuit()), new Tile(discard.getNumber() + 2, discard.getSuit()), discard, 1, player);
 				System.out.println(player.getName() + " declared a chow consisting of ");
 				discard.tileToString();
 				System.out.println((discard.getNumber() + 1) + " " + discard.getSuit());
 				System.out.println((discard.getNumber() + 2) + " " + discard.getSuit());
+				addDiscardChow(new Tile(discard.getNumber() + 1, discard.getSuit()), new Tile(discard.getNumber() + 2, discard.getSuit()), discard, 1, player);
 				return true;
 			} // done adding chow
 		// finished with type 1
 		
 		else if (type == 2 || type == 4 || type == 6 || type == 7) {
-				addDiscardChow(new Tile(discard.getNumber() - 1, discard.getSuit()), new Tile(discard.getNumber() + 1, discard.getSuit()), discard, 2, player);
 				System.out.println(player.getName() + " declared a chow consisting of ");
 				System.out.println((discard.getNumber() - 1) + " " + discard.getSuit());
 				discard.tileToString();
 				System.out.println((discard.getNumber() + 1) + " " + discard.getSuit());
+				addDiscardChow(new Tile(discard.getNumber() - 1, discard.getSuit()), new Tile(discard.getNumber() + 1, discard.getSuit()), discard, 2, player);
 				return true;
 			} // done adding chow
 		 // finished with type 2
 		
 		else if (type == 3 || type == 5 || type == 6 || type == 7) {
-				addDiscardChow(new Tile(discard.getNumber() - 2, discard.getSuit()), new Tile(discard.getNumber() - 1, discard.getSuit()), discard, 3, player);
 				System.out.println(player.getName() + " declared a chow consisting of ");
 				System.out.println((discard.getNumber() - 2) + " " + discard.getSuit());
 				System.out.println((discard.getNumber() - 1) + " " + discard.getSuit());
 				discard.tileToString();
+				addDiscardChow(new Tile(discard.getNumber() - 2, discard.getSuit()), new Tile(discard.getNumber() - 1, discard.getSuit()), discard, 3, player);
 				return true;
 			} // done adding chow
 		return false;
